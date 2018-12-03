@@ -16,7 +16,7 @@ def main():
     print("Songs To Learn 1.16 - by Raunak Dutta")
 
     song_counter = 0
-    for line in song_list:
+    for _ in song_list:
         song_counter += 1
 
     print(str(song_counter) + " Songs loaded")
@@ -24,7 +24,7 @@ def main():
     while continue_loop:
         continue_loop = execute_choice()
 
-        if continue_loop == False:
+        if not continue_loop:
             print("Saving File...")
             song_list_file.seek(0)
             song_list_file.truncate()  # turncate the file that is enpty it for the new list to be written
@@ -50,7 +50,7 @@ def execute_choice():
         song_list.append(file_format)
 
     elif ch == "C":
-        print("Selected Completed")
+        learn_song()
     elif ch == "Q":
         print("Have a nice day :)")
         continue_loop = False
@@ -80,10 +80,16 @@ def print_table():
             elif str_part_indicator == 4:
                 song_titlelearned = song_titlelearned + words
                 if "y" in song_titlelearned:
-                    song_titlelearned1 = "*"
+                    song_titlelearned1 = "✕"
                 else:
-                    song_titlelearned1 = " "
+                    song_titlelearned1 = "✓"
         print("%-35s %-35s %-35s %s" % (song_title, song_artist, song_year, song_titlelearned1))
+
+def learn_song():
+    print("Which song would you like to learn from 1-" + str(len(song_list) + 1)+"?")
+    num_learn = int(input())
+    num_learn = num_learn - 1
+    song_list[num_learn]=(song_list[num_learn])[:-2] + "n\n"
 
 
 if __name__ == '__main__':
