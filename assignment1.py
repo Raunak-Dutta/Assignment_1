@@ -41,8 +41,7 @@ def execute_choice():
     ch = ch_in.upper()
     continue_loop = True
     if ch == "L":
-        for line in song_list:
-            print(line)
+        print_table()
     elif ch == "A":
         song_title = str(input("Please enter the title of the song"))
         song_artist = str(input("Please enter the artist of the song"))
@@ -58,6 +57,33 @@ def execute_choice():
     else:
         print("Invalid input")
     return continue_loop
+
+
+def print_table():
+    print("%-35s %-35s %-35s %s" % ("Title", "Artist", "Year", "Songs Not Learned"))
+    print("=============================================================================================================================")
+    for line in song_list:
+        str_part_indicator = 1
+        song_titlelearned = ""
+        song_year = ""
+        song_artist = ""
+        song_title = ""
+        for words in line:
+            if words == ",":
+                str_part_indicator += 1
+            elif str_part_indicator == 1:
+                song_title = song_title + words
+            elif str_part_indicator == 2:
+                song_artist = song_artist + words
+            elif str_part_indicator == 3:
+                song_year = song_year + words
+            elif str_part_indicator == 4:
+                song_titlelearned = song_titlelearned + words
+                if "y" in song_titlelearned:
+                    song_titlelearned1 = "*"
+                else:
+                    song_titlelearned1 = " "
+        print("%-35s %-35s %-35s %s" % (song_title, song_artist, song_year, song_titlelearned1))
 
 
 if __name__ == '__main__':
