@@ -41,7 +41,7 @@ def execute_choice():
     ch = ch_in.upper()
     continue_loop = True
     if ch == "L":
-        print_table()
+        print_table("all")
     elif ch == "A":
         song_title = str(input("Please enter the title of the song"))
         song_artist = str(input("Please enter the artist of the song"))
@@ -59,10 +59,13 @@ def execute_choice():
     return continue_loop
 
 
-def print_table():
-    print("%-35s %-35s %-35s %s" % ("Title", "Artist", "Year", "Songs Not Learned"))
-    print("=============================================================================================================================")
+def print_table(which_print):
+    count = 0
+    print("%-5s %-35s %-35s %-35s %s" % ("No.", "Title", "Artist", "Year", "Songs Not Learned"))
+    print(
+        "=============================================================================================================================")
     for line in song_list:
+        count += 1
         str_part_indicator = 1
         song_titlelearned = ""
         song_year = ""
@@ -83,13 +86,26 @@ def print_table():
                     song_titlelearned1 = "✕"
                 else:
                     song_titlelearned1 = "✓"
-        print("%-35s %-35s %-35s %s" % (song_title, song_artist, song_year, song_titlelearned1))
+
+        if which_print == "all":
+            print("%-5s %-35s %-35s %-35s %s" % (count, song_title, song_artist, song_year, song_titlelearned1))
+        elif which_print == "inc" and song_titlelearned1 == "✕":
+            print("%-5s %-35s %-35s %-35s %s" % (count, song_title, song_artist, song_year, song_titlelearned1))
+
 
 def learn_song():
-    print("Which song would you like to learn from 1-" + str(len(song_list) + 1)+"?")
-    num_learn = int(input())
-    num_learn = num_learn - 1
-    song_list[num_learn]=(song_list[num_learn])[:-2] + "n\n"
+    print("Which song would you like to learn?")
+    count = 0
+    for song in song_list:
+        if song[(len(song) - 2)] == "y":
+            count = count + 1
+    if count == 0:
+        print("No more songs to learn, please add some new ones.")
+    else:
+        print_table("inc")
+        num_learn = int(input())
+        num_learn = num_learn - 1
+        song_list[num_learn] = (song_list[num_learn])[:-2] + "n\n"
 
 
 if __name__ == '__main__':
