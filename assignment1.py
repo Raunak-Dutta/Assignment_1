@@ -27,7 +27,7 @@ def main():
         if not continue_loop:
             print("Saving File...")
             song_list_file.seek(0)
-            song_list_file.truncate()  # turncate the file that is enpty it for the new list to be written
+            song_list_file.truncate()  # truncate the file that is empty it for the new list to be written
             for eliment in song_list:
                 if eliment != " ":
                     song_list_file.writelines(eliment)
@@ -63,11 +63,12 @@ def print_table(which_print):
     count = 0
     print("%-5s %-35s %-35s %-35s %s" % ("No.", "Title", "Artist", "Year", "Songs Not Learned"))
     print(
-        "=============================================================================================================================")
+        "================================================================"
+        "=============================================================")
     for line in song_list:
         count += 1
         str_part_indicator = 1
-        song_titlelearned = ""
+        song_title_learned = ""
         song_year = ""
         song_artist = ""
         song_title = ""
@@ -81,16 +82,16 @@ def print_table(which_print):
             elif str_part_indicator == 3:
                 song_year = song_year + words
             elif str_part_indicator == 4:
-                song_titlelearned = song_titlelearned + words
-                if "y" in song_titlelearned:
-                    song_titlelearned1 = "✕"
+                song_title_learned = song_title_learned + words
+                if "y" in song_title_learned:
+                    song_title_learned1 = "✕"
                 else:
-                    song_titlelearned1 = "✓"
+                    song_title_learned1 = "✓"
 
         if which_print == "all":
-            print("%-5s %-35s %-35s %-35s %s" % (count, song_title, song_artist, song_year, song_titlelearned1))
-        elif which_print == "inc" and song_titlelearned1 == "✕":
-            print("%-5s %-35s %-35s %-35s %s" % (count, song_title, song_artist, song_year, song_titlelearned1))
+            print("%-5s %-35s %-35s %-35s %s" % (count, song_title, song_artist, song_year, song_title_learned1))
+        elif which_print == "inc" and song_title_learned1 == "✕":
+            print("%-5s %-35s %-35s %-35s %s" % (count, song_title, song_artist, song_year, song_title_learned1))
 
 
 def learn_song():
