@@ -9,8 +9,6 @@ for e in song_list_file:
     if e != "":
         song_list.append(e)
 
-song_list_file.truncate(0)
-
 
 def main():
     print("Songs To Learn 1.16 - by Raunak Dutta")
