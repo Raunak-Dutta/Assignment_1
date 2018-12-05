@@ -43,11 +43,7 @@ def execute_choice():
     if ch == "L":
         print_table("all")
     elif ch == "A":
-        song_title = str(input("Please enter the title of the song"))
-        song_artist = str(input("Please enter the artist of the song"))
-        song_year = str(input("Please enter the year of the song's release"))
-        file_format = song_title + "," + song_artist + "," + song_year + "," + "y" + "\n"
-        song_list.append(file_format)
+        add_song()
 
     elif ch == "C":
         learn_song()
@@ -57,6 +53,14 @@ def execute_choice():
     else:
         print("Invalid input")
     return continue_loop
+
+
+def add_song():
+    song_title = str(input("Please enter the title of the song"))
+    song_artist = str(input("Please enter the artist of the song"))
+    song_year = str(input("Please enter the year of the song's release"))
+    file_format = song_title + "," + song_artist + "," + song_year + "," + "y" + "\n"
+    song_list.append(file_format)
 
 
 def print_table(which_print):
