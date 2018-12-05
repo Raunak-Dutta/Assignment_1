@@ -12,11 +12,9 @@ for e in song_list_file:
 
 def main():
     print("Songs To Learn 1.16 - by Raunak Dutta")
-
     song_counter = 0
     for _ in song_list:
         song_counter += 1
-
     print(str(song_counter) + " Songs loaded")
     continue_loop = True
     while continue_loop:
@@ -29,7 +27,6 @@ def main():
             for eliment in song_list:
                 if eliment != " ":
                     song_list_file.writelines(eliment)
-
     song_list_file.close()
 
 
@@ -42,7 +39,6 @@ def execute_choice():
         print_table("all")
     elif ch == "A":
         add_song()
-
     elif ch == "C":
         learn_song()
     elif ch == "Q":
@@ -63,7 +59,7 @@ def add_song():
 
 def print_table(which_print):
     count = 0
-    print("%-5s %-35s %-35s %-35s %s" % ("No.", "Title", "Artist", "Year", "Songs Not Learned"))
+    print("%-5s %-35s %-35s %-35s %s" % ("No.", "Title", "Artist", "Year", "Songs Learned"))
     print(
         "================================================================"
         "=============================================================")
@@ -89,7 +85,6 @@ def print_table(which_print):
                     song_title_learned1 = "✕"
                 else:
                     song_title_learned1 = "✓"
-
         if which_print == "all":
             print("%-5s %-35s %-35s %-35s %s" % (count, song_title, song_artist, song_year, song_title_learned1))
         elif which_print == "inc" and song_title_learned1 == "✕":
