@@ -1,5 +1,39 @@
 """
-WARNING: NEVER TERMINATE THE CODE, DOING THAT WILL RESULT IN THE CSV FILE BEING DELETED.
+Name: Raunak Dutta
+JCU_ID: 13662643
+Date: Dec 6, 2018
+Psudo-Code:
+
+main():
+load song;
+print list of menu
+call menu options
+repeat menu
+write changes to file
+close file
+
+menu options():
+ if L
+    open list():
+ else if A
+    open Append():
+ else if C
+    open Complete():
+ else
+    tell main to quit
+
+    L():
+    list the songs
+
+    A:
+    add song title
+    add song year
+    add song artist
+    add new entry
+
+    C:
+    list the songs L()
+    complete a song
 """
 import csv
 
@@ -62,7 +96,7 @@ def print_table(which_print):
     print("%-5s %-35s %-35s %-35s %s" % ("No.", "Title", "Artist", "Year", "Songs Learned"))
     print(
         "================================================================"
-        "=============================================================")
+        "===============================================================")
     for line in song_list:
         count += 1
         str_part_indicator = 1
