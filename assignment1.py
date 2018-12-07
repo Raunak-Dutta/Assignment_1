@@ -35,7 +35,6 @@ menu options():
     list the songs L()
     complete a song
 """
-import csv
 
 song_list_file = open("songs.csv", mode='r+')
 song_list = []
